@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<div>
+    <input type="file" id="myImgFile">
+    <img src="" id="myImg"/>
+</div><br><br>
+
+<input type="file" id="myMusicFile"><br><br>
+<audio controls="controls" src="" id="myMusic"></audio>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+
+    myImgFile.addEventListener("change",previewWithDataURL)
+    function previewWithDataURL() {
+        var reader = new FileReader();
+        reader.readAsDataURL($("#myImgFile")[0].files[0]);
+        reader.onload = function (event) {
+            $("#myImg").attr("src", event.target.result);
+        }
+    }
+
+    myMusicFile.addEventListener("change",previewWithObjectURL)
+    function previewWithObjectURL() {
+        var target = event.target.files[0];
+        var url = URL.createObjectURL(target);
+        myMusic.src = url;
+        myMusic.play();
+    }
+
+
+</script>
+</body>
+</html>

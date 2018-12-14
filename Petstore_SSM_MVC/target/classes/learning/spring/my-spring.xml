@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="bs" class="com.learning.spring.BookServiceImpl"></bean>
+
+    <bean class="com.learning.spring.configuration.SuibianSpringConfig2" />
+
+    <!--有参构建-->
+    <bean class="com.learning.components.Goal" id="goal">
+        <property name="name" value="多利"/>
+        <property name="countOfLegs" value="4"/>
+        <property name="aliases">
+            <ref bean="xx1"/>
+        </property>
+    </bean>
+
+    <!--集合-->
+    <util:list id="xx1">
+        <value>value1</value>
+        <value>value2</value>
+        <value>value3</value>
+    </util:list>
+
+    <!--设置别名-->
+    <alias name="bookDAO" alias="bookDao"/>
+    <alias name="bookDAO" alias="bookdao"/>
+
+    <!--引入外部xml文件-->
+    <import resource="dierge.xml"/>
+
+</beans>
